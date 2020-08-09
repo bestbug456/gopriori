@@ -2,7 +2,7 @@ package gopriori
 
 import "sync"
 
-// Apriori is the struct responsabile of contain the support map
+// Apriori is the struct responsible of contain the support map
 // for each combination which is grater than the imposed threshold
 type Apriori struct {
 	Supportmap       map[string]int

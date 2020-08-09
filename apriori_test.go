@@ -7,14 +7,14 @@ import (
 )
 
 var transaction = [][]string{
-	[]string{"apple", "beer", "rice", "肉"},
-	[]string{"apple", "beer", "rice"},
-	[]string{"apple", "beer"},
-	[]string{"apple", "pear"},
-	[]string{"milk", "beer", "rice", "肉"},
-	[]string{"milk", "beer", "rice"},
-	[]string{"milk", "beer"},
-	[]string{"milk", "pear"},
+	{"apple", "beer", "rice", "肉"},
+	{"apple", "beer", "rice"},
+	{"apple", "beer"},
+	{"apple", "pear"},
+	{"milk", "beer", "rice", "肉"},
+	{"milk", "beer", "rice"},
+	{"milk", "beer"},
+	{"milk", "pear"},
 }
 
 func TestTrain(t *testing.T) {
@@ -74,17 +74,17 @@ func TestGenerateID(t *testing.T) {
 
 func TestCombined(t *testing.T) {
 	ID := map[string][]int{
-		"apple": []int{1 << 0},
-		"rice":  []int{1 << 1},
-		"milk":  []int{1 << 2},
-		"肉":     []int{1 << 3},
+		"apple": {1 << 0},
+		"rice":  {1 << 1},
+		"milk":  {1 << 2},
+		"肉":     {1 << 3},
 	}
 	t.Log(ID)
 	original := map[string][]int{
-		"apple": []int{1 << 0},
-		"rice":  []int{1 << 1},
-		"milk":  []int{1 << 2},
-		"肉":     []int{1 << 3},
+		"apple": {1 << 0},
+		"rice":  {1 << 1},
+		"milk":  {1 << 2},
+		"肉":     {1 << 3},
 	}
 
 	combined := combination(original, ID)
@@ -128,10 +128,10 @@ func BenchmarkTrain(b *testing.B) {
 // BenchmarkCombined-8   	  195996	      5382 ns/op	    1507 B/op	      27 allocs/op
 func BenchmarkCombined(b *testing.B) {
 	ID := map[string][]int{
-		"apple": []int{1 << 0},
-		"rice":  []int{1 << 1},
-		"milk":  []int{1 << 2},
-		"肉":     []int{1 << 3},
+		"apple": {1 << 0},
+		"rice":  {1 << 1},
+		"milk":  {1 << 2},
+		"肉":     {1 << 3},
 	}
 	for i := 0; i < b.N; i++ {
 		combination(ID, ID)
