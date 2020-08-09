@@ -10,4 +10,3 @@ jobs:
       - export GO111MODULE=on #enable golang modules
       - go mod vendor
       - go test -race
-      - cat go.sum #document for each library the version used
